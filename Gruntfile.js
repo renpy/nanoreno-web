@@ -1,4 +1,4 @@
-// Generated on 2016-02-13 using generator-angular 0.15.1
+// Generated on 2016-01-22 using generator-angular 0.15.1
 'use strict';
 
 // # Globbing
@@ -224,7 +224,7 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
-    }, 
+    },
 
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
@@ -371,7 +371,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'nanorenoApp',
+          module: 'frontendDevTestApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
@@ -459,6 +459,14 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('flask', 'Run flask server.', function() {
+      var spawn = require('child_process').spawn;
+      grunt.log.writeln('Starting Flask development server.');
+      // stdio: 'inherit' let us see flask output in grunt
+      process.env.FLASK_YEOMAN_DEBUG = 1;
+      var PIPE = {stdio: 'inherit'};
+      spawn('python', ['main.py'], PIPE);
+   });
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -470,9 +478,10 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'postcss:server',
-      'connect:livereload',
+      // 'connect:livereload',
+      'flask',
       'watch'
-    ]);
+      ]);
   });
 
   grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
