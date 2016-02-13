@@ -12,9 +12,9 @@ application = main.create_app()
 
 mail_handler = SMTPHandler(
     ("127.0.0.1", 25),
-    'no-reply@ntcip.solartechnology.com',
-    [ "trothamel@solartechnology.com" ],
-    'interview.sthosts.net web error',
+    'tom@rothamel.us',
+    [ "tom@rothamel.us" ],
+    'www.nanoreno.org web error',
     )
 
 mail_handler.setLevel(logging.ERROR)
