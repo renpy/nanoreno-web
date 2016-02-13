@@ -45,6 +45,27 @@
           site serves as a hub to help find their many efforts.
         </p>
 
+        <p ng-controller="DeathClock">
+           <span ng-cloak>
+           NaNoRenO {{ year }}
+
+           <span ng-if="now < start">
+            starts in
+            <ng-pluralize count="startDays" when="{ 'one' : '{} day', 'other' : '{} days' }">
+            </ng-pluralize><span ng-if="startDays < 1">, {{ startHours }}:{{ startMinutes }}:{{ startSeconds }}</span>
+
+            and
+           </span>
+
+           ends in
+            <b>
+            <ng-pluralize count="endDays" when="{ 'one' : '{} day', 'other' : '{} days' }">
+            </ng-pluralize>, {{ endHours }}:{{ endMinutes }}:{{ endSeconds }}.
+            </b>
+            </span> &nbsp;
+        </p>
+
+
       </div>
     </div>
 
@@ -201,22 +222,16 @@
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
-  <script src='bower_components/jquery/dist/jquery.js'></script>
-  <script src='bower_components/angular/angular.js'></script>
-  <script src='bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js'></script>
-  <script src='bower_components/angular-animate/angular-animate.js'></script>
-  <script src='bower_components/angular-cookies/angular-cookies.js'></script>
-  <script src='bower_components/angular-resource/angular-resource.js'></script>
-  <script src='bower_components/angular-route/angular-route.js'></script>
-  <script src='bower_components/angular-sanitize/angular-sanitize.js'></script>
-  <script src='bower_components/angular-touch/angular-touch.js'></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
   <!-- endbower -->
-  <!-- endbuild -->
-
-  <!-- build:js({.tmp,app}) scripts/scripts.js -->
-  <script src="scripts/app.js"></script>
-  <script src="scripts/controllers/main.js"></script>
-  <script src="scripts/controllers/about.js"></script>
   <!-- endbuild -->
 
   <!--  build:remove -->
@@ -225,6 +240,14 @@
     + ':35729/livereload.js?snipver=1" type="text/javascript"><\/script>')
     </script>
   <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/controllers/deathclock.js"></script>
+  <!-- endbuild -->
+
 
 </body>
 </html>

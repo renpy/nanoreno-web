@@ -31,3 +31,7 @@ body {
     @extend .well;
     padding-top: 0px;
 }
+
+[ng-cloak] {
+    display: none !important;
+}
