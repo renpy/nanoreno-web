@@ -13,7 +13,7 @@ ssh $user@$host mkdir -p /home/$user/virtualenv.$site
 ssh $user@$host mkdir -p /home/$user/wsgi.$site
 ssh $user@$host mkdir -p /home/$user/WWW.$site
 
-rsync -av --delete ~/.virtualenvs/$virtualenv/ $user@$host:/home/$user/virtualenv.$site --exclude __pycache__
+# rsync -av --delete ~/.virtualenvs/$virtualenv/ $user@$host:/home/$user/virtualenv.$site --exclude __pycache__
 
 sync () {
     rsync -av --delete $1 $user@$host:/home/$user/wsgi.$site --exclude __pycache__
